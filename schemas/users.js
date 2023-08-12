@@ -13,4 +13,10 @@ const registerSchema = Joi.object({
   token: Joi.string(),
 });
 
-module.exports = { registerSchema };
+const emailSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp).required().messages({
+    "any.required": `missed required email field`,
+  }),
+});
+
+module.exports = { registerSchema, emailSchema };
